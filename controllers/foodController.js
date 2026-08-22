@@ -57,11 +57,11 @@ const completeFood = async (req, res) => {
 const deleteFood = async (req, res) => {
   try {
     const food = await Food.findById(req.params.id);
-    if (!food) return res.status(404).json({ message: "Not found" });
+    if (!food) return res.status(404).json({ message: 'Not found' });
     if (food.provider.toString() !== req.user._id.toString())
-      return res.status(403).json({ message: "Not authorized" });
+      return res.status(403).json({ message: 'Not authorized' });
     await food.deleteOne();
-    res.json({ message: "Deleted" });
+    res.json({ message: 'Deleted' });
   } catch (err) { res.status(500).json({ message: err.message }); }
 };
 
